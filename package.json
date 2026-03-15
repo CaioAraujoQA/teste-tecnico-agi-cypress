@@ -1,0 +1,13 @@
+{
+  "name": "teste-tecnico-agi",
+  "version": "1.0.0",
+  "description": "Automação de testes do blog Agi utilizando Cypress",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test": "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "^13.17.0"
+  }
+}
