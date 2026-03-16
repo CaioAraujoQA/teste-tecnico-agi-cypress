@@ -10,11 +10,13 @@ class agiBlogPage {
     }
 
     selecionarLupa() {
-        cy.get('.astra-search-icon')
-            .should('be.visible')
-            .click({ force: true })
-        cy.get('#search-field')
-            .invoke('attr', 'tabindex', '0')
+        cy.xpath("//*[@id='ast-desktop-header']//a[contains(@class,'astra-search-icon')]")
+  .click({ force: true })
+       // cy.get('.astra-search-icon')
+         //   .should('be.visible')
+           // .click({ force: true })
+        //cy.get('#search-field')
+          //  .invoke('attr', 'tabindex', '0')
 
 
         //cy.get('body').then(($body) => {
