@@ -10,29 +10,39 @@ class agiBlogPage {
     }
 
     selecionarLupa() {
-
-        cy.get('body').then(($body) => {
-
-            if ($body.find('.ast-icon > .ahfb-svg-iconset > svg').length) {
-                cy.get('.ast-icon > .ahfb-svg-iconset > svg').click()
-            } else {
-                cy.get('.ast-icon > .ahfb-svg-iconset').click()
-            }
-
-        })
-        cy.get('.ast-icon > .ahfb-svg-iconset, .ast-icon > .ahfb-svg-iconset > svg')
-            .first()
-            .click()
-        cy.get('#search-field', { timeout: 10000 })
+        cy.get('.astra-search-icon')
             .should('be.visible')
+            .click({ force: true })
+        cy.get('#search-field')
+            .invoke('attr', 'tabindex', '0')
 
 
+        //cy.get('body').then(($body) => {
+
+        //if ($body.find('.ast-icon > .ahfb-svg-iconset > svg').length) {
+        //cy.get('.ast-icon > .ahfb-svg-iconset > svg').click()
+        //} else {
+        //cy.get('.ast-icon > .ahfb-svg-iconset').click()
+        //  }
+
+        //})
+        //cy.get('.ast-icon > .ahfb-svg-iconset, .ast-icon > .ahfb-svg-iconset > svg')
+        //.first()
+        //  .click()
+        //  cy.get('#search-field', { timeout: 10000 })
+        //    .should('be.visible')
 
     }
 
+
+
     digitarBusca() {
-        cy.get('#search-field').type('Taxa de juros')
-        cy.get('#search-field').type('{enter}')
+        cy.get('#search-field', { timeout: 10000 })
+            .should('be.visible')
+            .type('Taxa de juros{enter}', { force: true })
+
+        //cy.get('#search-field').type('Taxa de juros')
+        //cy.get('#search-field').type('{enter}')
 
     }
 
