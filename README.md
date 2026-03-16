@@ -1,89 +1,176 @@
-Pré-requisitos
+# Automação de Testes com Cypress
+
+## Cenários de Teste
+
+### Cenário 1 - Realizar busca utilizando a lupa
+
+Objetivo:
+
+Validar que o usuário consegue realizar uma busca utilizando a lupa do site.
+
+Passos automatizados:
+
+1 - Acessar o site https://blog.agibank.com.br/
+
+2 - Clicar no ícone da lupa de busca
+
+3 - Digitar um termo válido na busca
+
+4 - Pressionar Enter
+
+5 - Validar que os resultados da busca são exibidos
+
+6 - Acessar um dos resultados e validar se retorna dados na pagina.
+
+
+### Cenário 2 - Realizar busca com termo inexistente
+
+Objetivo:
+
+Validar o comportamento do sistema quando o usuário realiza uma busca por um termo que não possui resultados.
+
+Passos automatizados:
+
+1 - Acessar o site https://blog.agibank.com.br/
+
+2 - Clicar na lupa de busca
+
+3 - Digitar um termo inexistente
+
+4 - Pressionar Enter
+
+5 - Validar que não existem resultados para a busca realizada e que a página continua carregada corretamente, sem apresentar erros ou quebra do site.
+
+
+### Cenário 3 - Acessar um artigo através da busca
+
+Objetivo:
+
+Validar que o usuário consegue acessar um artigo a partir dos resultados da busca.
+
+Passos automatizados:
+
+1 - Acessar o site https://blog.agibank.com.br/
+
+2 - Clicar na lupa de busca
+
+3 - Pressionar Enter
+
+4 - Validar que os resultados da busca são exibidos. 
+
+
+
+
+---
+
+# Pré-requisitos
 
 - Node.js (preferencialmente versão LTS)
-
 - npm (gerenciador de pacotes do Node.js)
-
 - Cypress (instalado localmente no projeto)
 
+---
 
-1 - Instale Node.js
+# 1 - Instale Node.js
 
-Acesse o site https://nodejs.org/pt e faça o download, em seguida execute o arquivo baixado
+Acesse o site:
 
-Após a instalação reinicie o computador
+https://nodejs.org/pt
 
-Quando o sistema reiniciar
+Faça o download e execute o instalador.
 
+Após a instalação reinicie o computador.
 
-2 - Instale o Vscode
+Quando o sistema reiniciar siga para o próximo passo.
 
-no navegador digite vscode download ou no link https://code.visualstudio.com/download
+---
 
-após baixar execute o arquivo para instalar.
+# 2 - Instale o VSCode
 
+No navegador digite:
 
-Entre na pasta do projeto e clique com o direito do mouse e selecione 'Abrir no Terminal'
+vscode download
 
-digite o comando code . e de um enter
+ou acesse:
 
+https://code.visualstudio.com/download
 
+Após baixar execute o arquivo para instalar.
 
-3 - Instalação das Dependências
+Entre na pasta do projeto, clique com o botão direito do mouse e selecione:
 
-No vscode aberto dentro do projeto Clique em terminal no canto superior a esquerda e em seguida em new terminal
+Abrir no Terminal
 
-No terminal que abriu na parte inferior, digite o seguinte comando:
+Digite o comando:
 
-npm install cypress --save-dev
+```
+code .
+```
 
-Após instalar digite o comando npm install 
+e pressione Enter.
 
-Isso instalará todas as dependências listadas no arquivo package.json, incluindo o Cypress e plugins necessários.
+---
 
+# 3 - Instalação das Dependências
 
-4 - Configuração do SonarQube
+Com o VSCode aberto dentro do projeto:
 
-Instalação do SonarQube:
+Clique em **Terminal** no canto superior e depois em **New Terminal**.
 
-Faça o download e instale o SonarQube localmente conforme as instruções do site oficial https://www.sonarsource.com/products/sonarqube/downloads/.
+No terminal que abriu na parte inferior digite:
 
-Inicie o SonarQube:
+```
+npm install
+```
 
-Navegue até o diretório de instalação do SonarQube e inicie o servidor usando o comando apropriado para o seu sistema operacional.
-Exemplo: sonarqube-9.9.6.92038\bin\windows-x86-64
+Esse comando instalará todas as dependências do projeto, incluindo o Cypress.
 
-No local do arquivo StartSonar.bat, clique com o direito do mouse na pasta e selecione 'Abrir no Terminal'
+---
 
-digite StartSonar.bat no terminal e de um enter, isso ira subir o sonar na maquina local
+# 4 - Executar os Testes
 
-4.1
+Após instalar as dependências, execute o seguinte comando no terminal:
 
-Acessando o SonarQube
+```
+npx cypress open
+```
 
-Abra seu navegador e acesse http://localhost:9000.
+Esse comando abrirá o **Cypress Test Runner**, onde você poderá selecionar e executar os testes individualmente ou todos juntos abrindo o navegador.
 
-Faça login usando as credenciais padrão (usuário admin, senha admin)
+---
 
-Mude a senha de admin para admin2 da forma que está no projeto, no arquivo sonar-project.properties.
+# 5 - Executar testes em modo headless
 
+Para executar os testes diretamente no terminal sem abrir o navegador utilize:
 
-5 - Execute o projeto
+```
+npx cypress run
+```
 
-Após instalar e configurar tudo entre no projeto com o vscode e abra o terminal, digite o comando 'npx cypress open' Isso abrirá o Cypress Test Runner, onde você pode selecionar e executar os testes individualmente ou em conjunto abrindo o navegador.
+Esse comando executa todos os testes automaticamente.
 
-Para gerar relatorios e rodar em modo headless execute o comando no terminal do vscode 'npm run cy:run' e de um enter
+---
 
-Este comando limpa os relatórios existentes, executa os testes especificados no arquivo e gera relatórios usando Mochawesome.
+# Execução automática no GitHub Actions
 
-e por ultimo
+Este projeto possui execução automática de testes configurada no **GitHub Actions**.
 
-com o servidor do sonaqube local iniciado conforme o passo 4.1, Execute depois o comando 'npm run sonar' gerar o relatorio do sonarqube onde voce ira conseguir ver acessando http://localhost:9000. com login admin e senha admin2 após ter mudado pois o sonarqube exige.
+Sempre que há alterações no repositório, o pipeline executa automaticamente os testes Cypress.
 
+Para visualizar a execução dos testes no GitHub:
 
+1 - Acesse o repositório no GitHub
 
+2 - Clique na aba **Actions**
 
+3 - Selecione o workflow chamado **Cypress Tests**
 
+4 - Abra a execução mais recente para visualizar os passos do pipeline
 
+Lá será possível verificar:
 
+- Instalação das dependências
+- Execução dos testes Cypress
+- Status final da execução (sucesso ou falha)
 
+Dessa forma é possível acompanhar a execução dos testes diretamente pelo GitHub sem necessidade de rodar o projeto localmente.
