@@ -3,7 +3,11 @@
 class agiBlogPage {
 
     acessarPagina() {
-        cy.visit('https://blog.agibank.com.br/').wait(3000)
+        cy.visit('https://blog.agibank.com.br/')
+
+        cy.get('body').should('be.visible')
+
+        cy.reload()
 
     }
 
