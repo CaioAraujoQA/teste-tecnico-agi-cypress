@@ -5,37 +5,33 @@ class agiBlogPage {
     acessarPagina() {
         cy.visit('https://blog.agibank.com.br/').wait(3000)
 
-
-
     }
 
     selecionarLupa() {
-        cy.xpath("//*[@id='ast-desktop-header']//a[contains(@class,'astra-search-icon')]")
-  .click({ force: true })
-       // cy.get('.astra-search-icon')
-         //   .should('be.visible')
-           // .click({ force: true })
-        //cy.get('#search-field')
-          //  .invoke('attr', 'tabindex', '0')
+        cy.get('.astra-search-icon')
+            .should('be.visible')
+            .click({ force: true })
+        cy.get('#search-field')
+            .invoke('attr', 'tabindex', '0')
 
 
-        //cy.get('body').then(($body) => {
+        cy.get('body').then(($body) => {
 
-        //if ($body.find('.ast-icon > .ahfb-svg-iconset > svg').length) {
-        //cy.get('.ast-icon > .ahfb-svg-iconset > svg').click()
-        //} else {
-        //cy.get('.ast-icon > .ahfb-svg-iconset').click()
-        //  }
+            if ($body.find('.ast-icon > .ahfb-svg-iconset > svg').length) {
+                cy.get('.ast-icon > .ahfb-svg-iconset > svg').click()
+            } else {
+                cy.get('.ast-icon > .ahfb-svg-iconset').click()
+            }
 
-        //})
-        //cy.get('.ast-icon > .ahfb-svg-iconset, .ast-icon > .ahfb-svg-iconset > svg')
-        //.first()
-        //  .click()
-        //  cy.get('#search-field', { timeout: 10000 })
-        //    .should('be.visible')
+        })
+        cy.get('.ast-icon > .ahfb-svg-iconset, .ast-icon > .ahfb-svg-iconset > svg')
+            .first()
+            .click()
+        cy.get('#search-field', { timeout: 10000 })
+            .should('be.visible')
+
 
     }
-
 
 
     digitarBusca() {
